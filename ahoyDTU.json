@@ -236,6 +236,20 @@
                   "color": "green",
                   "index": 0,
                   "text": "Inverter start"
+                },
+                "2": {
+                  "color": "red",
+                  "index": 1,
+                  "text": "DTU command failed"
+                },
+                "143": {
+                  "color": "orange",
+                  "index": 2,
+                  "text": "Grid: Grid undervoltage"
+                },
+                "147": {
+                  "index": 3,
+                  "text": "Grid: Power grid outage"
                 }
               },
               "type": "value"
@@ -993,7 +1007,7 @@
             "spanNulls": false,
             "stacking": {
               "group": "A",
-              "mode": "normal"
+              "mode": "none"
             },
             "thresholdsStyle": {
               "mode": "off"
@@ -1015,7 +1029,44 @@
           },
           "unit": "watt"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "AVG"
+            },
+            "properties": [
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "dash": [
+                    0,
+                    10
+                  ],
+                  "fill": "dot"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "MAX"
+            },
+            "properties": [
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "dash": [
+                    10,
+                    10
+                  ],
+                  "fill": "dash"
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 8,
@@ -1048,6 +1099,32 @@
           "legendFormat": "{{site}}:{{inverter}}",
           "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "max_over_time(ahoy_solar_P_AC_watt{site=~\"$site\",inverter=~\"$inverter\"}[31d])",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "MAX",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "expr": "avg_over_time(ahoy_solar_P_AC_watt{site=~\"$site\",inverter=~\"$inverter\"}[31d])",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "AVG",
+          "range": true,
+          "refId": "C"
         }
       ],
       "title": "P_AC_watt",
@@ -2263,7 +2340,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 50
+            "y": 74
           },
           "id": 2,
           "options": {
@@ -2358,7 +2435,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 50
+            "y": 74
           },
           "id": 32,
           "options": {
@@ -2453,7 +2530,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 58
+            "y": 82
           },
           "id": 13,
           "options": {
@@ -2548,7 +2625,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 58
+            "y": 82
           },
           "id": 3,
           "options": {
@@ -2951,13 +3028,13 @@
     ]
   },
   "time": {
-    "from": "now-2d",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "ahoyPV",
+  "title": "ahoyDTU",
   "uid": "d280f0ab-0b89-45da-a25c-081eb68f6ae6",
-  "version": 22,
+  "version": 27,
   "weekStart": ""
 }
