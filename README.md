@@ -1,10 +1,10 @@
 # grafana-ahoydtu
 
 - Grafana dashboard to use with ahoDTU's Prometheus endpoint
-	- ahoyDTU (https://ahoydtu.de, tested and working with v0.7.36)
-	- prometheus-enabled build (can be found here: https://github.com/lumapu/ahoy/releases in latest zip file, e.g. xxxxxx_ahoy_0.7.zz_yyyyyy_esp32_prometheus.bin)
+	- ahoyDTU (https://ahoydtu.de, tested and working with v0.8.42)
+	- prometheus-enabled build (can be found here: https://github.com/lumapu/ahoy/releases in latest zip file, e.g. xxxxxx_ahoy_0.8.42_yyyyyy_esp32_prometheus.bin)
 	- running prometheus as data source
-	- obviously visualized in Grafana (tested and running on v10.1.1)
+	- obviously visualized in Grafana (tested and running on v10.2.3)
 
 - example prometheus job:
 ```
