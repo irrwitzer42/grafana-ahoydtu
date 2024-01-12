@@ -74,7 +74,32 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
   "id": null,
-  "links": [],
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": true,
+      "title": "GitHub",
+      "tooltip": "Dashboard Repository on Github",
+      "type": "link",
+      "url": "https://github.com/irrwitzer42/grafana-ahoydtu/"
+    },
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": true,
+      "title": "Grafana.com",
+      "tooltip": "",
+      "type": "link",
+      "url": "https://grafana.com/grafana/dashboards/19627-ahoydtu/"
+    }
+  ],
   "liveNow": false,
   "panels": [
     {
@@ -241,7 +266,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "AVG"
+              "options": "7d AVG"
             },
             "properties": [
               {
@@ -342,7 +367,7 @@
           "instant": false,
           "legendFormat": "Power",
           "range": true,
-          "refId": "A"
+          "refId": "POWER"
         },
         {
           "datasource": {
@@ -355,7 +380,7 @@
           "instant": false,
           "legendFormat": "MAX",
           "range": true,
-          "refId": "B"
+          "refId": "MAX"
         },
         {
           "datasource": {
@@ -368,7 +393,7 @@
           "instant": false,
           "legendFormat": "7d AVG",
           "range": true,
-          "refId": "C"
+          "refId": "AVG"
         },
         {
           "datasource": {
@@ -377,11 +402,11 @@
           },
           "editorMode": "code",
           "expr": "sum( ( ahoy_solar_inverter_power_limit_read{site=~\"$site\",inverter=~\"$inverter\"} != 65535 ) / 100 * ahoy_solar_inverter_max_power{site=~\"$site\",inverter=~\"$inverter\"})",
-          "hide": false,
+          "hide": true,
           "instant": false,
           "legendFormat": "LIMIT",
           "range": true,
-          "refId": "D"
+          "refId": "LIMIT"
         }
       ],
       "title": "P_AC_watt",
@@ -1335,8 +1360,6 @@
             }
           },
           "mappings": [],
-          "max": 100,
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1430,7 +1453,7 @@
           },
           "editorMode": "code",
           "expr": "ahoy_solar_inverter_power_limit_read{site=~\"$site\",inverter=~\"$inverter\"} != 65535",
-          "hide": false,
+          "hide": true,
           "instant": false,
           "legendFormat": "{{site}}:{{inverter}}:LIMIT",
           "range": true,
@@ -1853,8 +1876,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -1933,8 +1955,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2038,8 +2059,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -2146,8 +2166,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -2255,8 +2274,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -2364,8 +2382,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -3700,6 +3717,6 @@
   "timezone": "",
   "title": "ahoyDTU",
   "uid": "d280f0ab-0b89-45da-a25c-081eb68f6ae6",
-  "version": 56,
+  "version": 58,
   "weekStart": ""
 }
